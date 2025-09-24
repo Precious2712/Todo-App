@@ -82,7 +82,7 @@ export function LoginComp() {
 
                                 className="text-center text-pretty hover:underline underline-offset-2 mt-4 cursor-pointer font-sans"
                             >
-                                Don't have an account? Sign up
+                                Dont have an account? Sign up
                             </p>
                         </Link>
                     </div>
