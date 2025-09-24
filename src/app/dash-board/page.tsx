@@ -1,23 +1,17 @@
 'use client';
 
-import axios from "axios";
-import { useEffect } from "react";
 
 export default function DashBoard() {
-    const id = localStorage.getItem('id');
+    // const id = localStorage.getItem('id');
 
-    const task = async () => {
-        try {
-            const res = await axios.get(`http://localhost:4000/api/v2/getAllTask/${id}`);
-            console.log(res.data);
-        } catch (err) {
-            console.error("Error fetching tasks:", err);
-        }
-    };
-
-    useEffect(() => {
-        task();
-    }, []);
+    // const task = async () => {
+    //     try {
+    //         const res = await axios.get(`http://localhost:4000/api/v2/getAllTask/${id}`);
+    //         console.log(res.data);
+    //     } catch (err) {
+    //         console.error("Error fetching tasks:", err);
+    //     }
+    // };
 
     return (
         <div>

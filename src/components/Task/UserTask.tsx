@@ -17,7 +17,6 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 export function UserTask() {
     const [loading, setIsLoading] = useState(false);
-    const navigate = useRouter();
     const router = useRouter();
 
     const form = useForm<TaskForm>({

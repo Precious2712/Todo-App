@@ -12,7 +12,7 @@ import { Input } from "../ui/input";
 import { signupAuth } from "@/Data/SignupField";
 import { Signup } from "../FormSchema/ShacdnForm";
 import { Control } from "react-hook-form";
-import { Eye, EyeOff, LockKeyhole, Mail, MapPin } from "lucide-react";
+import { Eye, EyeOff, LockKeyhole } from "lucide-react";
 import { useState } from "react";
 
 interface signupShadcnProps extends signupAuth {
