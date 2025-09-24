@@ -34,6 +34,7 @@ export function LoginComp() {
             if (res) {
                 toast.success(`${res.data.email} has log in`);
                 router.push('/task');
+                toast.success(`${res.data.user.firstName} has successfully log in`);
             }
             localStorage.setItem('user-data', JSON.stringify(res.data));
             const token = res.data.user.token;

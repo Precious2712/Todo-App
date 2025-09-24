@@ -33,22 +33,27 @@ export function UserTask() {
     async function onSubmit(values: TaskForm) {
         try {
             setIsLoading(true);
-            const res = await axios.post('http://localhost:4000/api/v1/register', values);
+            const _id = localStorage.getItem('id');
+        
+            const obj = {
+                userId: _id,
+                ...values
+            }
+            const res = await axios.post('http://localhost:4000/api/v2/createtasks', obj);
+            
             if (res) {
                 toast.success('You can proceed to log in');
-                router.push('/login');
+                router.push('/dash-board');
             }
 
-            if (res.data.message === 'Email already exists') {
-                toast('Email already exists');
-                setIsLoading(false);
-            }
         } catch (error) {
             setIsLoading(false);
             console.log(error, 'error-message');
             let errorResponse = 'error'
             if (axios.isAxiosError(error)) {
-                errorResponse = error.response?.data.message || errorResponse
+                errorResponse = error.response?.data.message || errorResponse;
+                toast.error(`${errorResponse}`);
+                router.push('/task');
             }
             toast.success(`${errorResponse}`);
 

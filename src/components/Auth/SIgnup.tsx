@@ -9,14 +9,12 @@ import { register } from "@/Data/SignupField";
 import { ShacdnSignup } from "../Shacdn/ShacdnSignup";
 import axios from "axios";
 import { useState } from "react";
-// import { useAppContext } from "../useContext/useContext";
 import Link from "next/link";
 import { ArrowBigLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 export function SignupComp() {
     const [loading, setIsLoading] = useState(false);
-    // const navigate = useRouter();
     const router = useRouter();
 
     const form = useForm<Signup>({
@@ -35,6 +33,7 @@ export function SignupComp() {
             const res = await axios.post('http://localhost:4000/api/v1/register', values);
             if (res) {
                 toast.success('You can proceed to log in');
+                toast.success(`${res.data.firstName} your sign up is successfull`);
                 router.push('/login');
             }
 

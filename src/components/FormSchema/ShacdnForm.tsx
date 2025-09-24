@@ -4,7 +4,7 @@ export const signupFormSchema = z.object({
     firstName: z.string(),
     lastName: z.string(),
     email: z.string().email("Invalid email address").min(3, "Email is required"),
-    password: z.string().min(7).max(12),
+    password: z.string().min(7, 'minimum is 7').max(12, 'maximum is 12'),
 });
 
 export const loginFormSchema = z.object({

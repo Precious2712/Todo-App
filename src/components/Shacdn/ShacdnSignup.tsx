@@ -49,7 +49,7 @@ export function ShacdnSignup({
                                             {...field}
                                             required={required}
                                             type="text"
-                                            className="pl-9"
+                                            className=""
                                         />
 
                                     </div>
