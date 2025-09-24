@@ -44,7 +44,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
 
             if (res.data && res.data.allData) {
                 setAllUserTask(res.data.allData);
-                router.push("/task");
+                router.push("/profile");
             }
             console.log(res);
 
