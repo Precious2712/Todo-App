@@ -47,7 +47,7 @@ export function UserTask() {
 
             if (res) {
                 toast.success('You can proceed to view task');
-                router.push('/DashBoard');
+                router.push('/profile');
             }
 
         } catch (error) {
