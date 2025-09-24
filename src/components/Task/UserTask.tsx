@@ -34,13 +34,17 @@ export function UserTask() {
         try {
             setIsLoading(true);
             const _id = localStorage.getItem('id');
+            console.log(_id);
+            
         
             const obj = {
                 userId: _id,
                 ...values
             }
             const res = await axios.post('http://localhost:4000/api/v2/createtasks', obj);
+            console.log(obj, 'wating');
             
+
             if (res) {
                 toast.success('You can proceed to log in');
                 router.push('/dash-board');
@@ -55,7 +59,6 @@ export function UserTask() {
                 toast.error(`${errorResponse}`);
                 router.push('/task');
             }
-            toast.success(`${errorResponse}`);
 
         } finally {
             setIsLoading(false);

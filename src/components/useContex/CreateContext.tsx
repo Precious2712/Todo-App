@@ -1,7 +1,7 @@
 'use client';
 
 import axios from "axios";
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Task } from "@/Data/user-task";
 
@@ -20,10 +20,15 @@ type AppProviderProps = {
 
 export const AppProvider = ({ children }: AppProviderProps) => {
     const [slide, setSlide] = useState(false);
-    const id = localStorage.getItem('id');
     const router = useRouter();
+    const [id, setId] = useState<string | null>(null);
 
     const [allUserTask, setAllUserTask] = useState<Task[] | null>(null);
+
+    useEffect(() => {
+        const id = localStorage.getItem("id");
+        setId(id);
+    }, []);
 
     const openHandle = () => {
         setSlide(!slide);

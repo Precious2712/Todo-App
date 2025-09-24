@@ -32,25 +32,18 @@ export function SignupComp() {
             setIsLoading(true);
             const res = await axios.post('http://localhost:4000/api/v1/register', values);
             if (res) {
-                toast.success('You can proceed to log in');
                 toast.success(`${res.data.firstName} your sign up is successfull`);
                 router.push('/login');
             }
-
-            if (res.data.message === 'Email already exists') {
-                toast('Email already exists');
-                setIsLoading(false);
-            }
-            console.log(values);
             
         } catch (error) {
             setIsLoading(false);
             console.log(error, 'error-message');
             let errorResponse = 'error'
             if (axios.isAxiosError(error)) {
-                errorResponse = error.response?.data.message || errorResponse
+                errorResponse = error.response?.data.message || errorResponse;
+                toast.success(`${errorResponse}`);
             }
-            toast.success(`${errorResponse}`);
 
         } finally {
             setIsLoading(false);

@@ -32,7 +32,6 @@ export function LoginComp() {
             setIsLoading(true);
             const res = await axios.post('http://localhost:4000/api/v1/login', values);
             if (res) {
-                toast.success(`${res.data.email} has log in`);
                 router.push('/task');
                 toast.success(`${res.data.user.firstName} has successfully log in`);
             }
@@ -48,9 +47,9 @@ export function LoginComp() {
             console.log(error, 'error-message');
             let errorResponse = 'Network error'
             if (axios.isAxiosError(error)) {
-                errorResponse = error.response?.data.message || errorResponse
+                errorResponse = error.response?.data.message || errorResponse;
+                toast.success(`${errorResponse}`);
             }
-            toast.success(`${errorResponse}`);
         } finally {
             setIsLoading(false);
         }
