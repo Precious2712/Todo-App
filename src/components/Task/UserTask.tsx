@@ -43,10 +43,10 @@ export function UserTask() {
             }
             const res = await axios.post('http://localhost:4000/api/v2/createtasks', obj);
             console.log(obj, 'wating');
-            
+            console.log(res);
 
             if (res) {
-                toast.success('You can proceed to log in');
+                toast.success('You can proceed to view task');
                 router.push('/dash-board');
             }
 

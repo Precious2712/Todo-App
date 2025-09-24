@@ -29,7 +29,7 @@ export const userTask: task[] = [
         required: true,
     },
     {
-        name: "taskFOur",
+        name: "taskFour",
         type: "text",
         label: "TaskFour",
         placeholder: "Enter your password",

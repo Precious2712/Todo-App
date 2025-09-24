@@ -40,6 +40,7 @@ export function LoginComp() {
             const id = res.data.user._id;
             localStorage.setItem('id', id);
             localStorage.setItem('token', token);
+            localStorage.setItem('firstName', res.data.user.firstName);
             console.log(values);
             
         } catch (error) {

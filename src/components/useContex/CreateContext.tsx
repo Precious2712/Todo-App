@@ -8,8 +8,10 @@ import { Task } from "@/Data/user-task";
 type AppContextType = {
     openHandle: () => void;
     slide: boolean;
-    handleViewTask: () => void;
+    handleViewTask: (id: string) => void;
     allUserTask: Task[] | null;
+    id: string | null;
+    setAllUserTask: React.Dispatch<React.SetStateAction<Task[] | null>>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -34,7 +36,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         setSlide(!slide);
     }
 
-    const handleViewTask = async () => {
+    const handleViewTask = async (id: string) => {
         try {
             const res = await axios.get(
                 `http://localhost:4000/api/v2/getUserTasks/${id}`
@@ -44,6 +46,8 @@ export const AppProvider = ({ children }: AppProviderProps) => {
                 setAllUserTask(res.data.allData);
                 router.push("/dash-board");
             }
+            console.log(res);
+
         } catch (error) {
             console.error("Error fetching tasks:", error);
         }
@@ -55,7 +59,9 @@ export const AppProvider = ({ children }: AppProviderProps) => {
                 openHandle,
                 slide,
                 handleViewTask,
-                allUserTask
+                allUserTask,
+                id,
+                setAllUserTask
             }}>
             {children}
         </AppContext.Provider>
