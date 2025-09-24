@@ -1,27 +1,35 @@
-"use client"
+"use client";
 
-import { Header } from "@/components/Task/Nav"
-import { useAppContext } from "@/components/useContex/CreateContext"
-import { useState } from "react"
-import { Trash2, Calendar, Clock, CheckCircle2 } from "lucide-react"
-import axios from "axios"
+import { useAppContext } from "@/components/useContex/CreateContext";
+import { useEffect, useState } from "react";
+import { Trash2, Calendar, Clock, CheckCircle2 } from "lucide-react";
+import axios from "axios";
 
 export function DashBoardPage() {
     const { allUserTask, setAllUserTask } = useAppContext();
     const [loading, setLoading] = useState<string | null>(null);
-    const firstName = localStorage.getItem("firstName");
+    const [firstName, setFirstName] = useState<string | null>(null);
+
+    useEffect(() => {
+        const storedName = localStorage.getItem("firstName");
+        if (storedName) {
+            setFirstName(storedName);
+        }
+    }, []);
 
     const deleteUserTask = async (id: string) => {
         try {
             setLoading(id);
 
-            await axios.delete(`https://todo-api-wnbz.onrender.com/api/v2/deletetasks/${id}`);
+            await axios.delete(
+                `https://todo-api-wnbz.onrender.com/api/v2/deletetasks/${id}`
+            );
 
-            const storedId = localStorage.setItem("_id", id);
-            console.log(storedId, "stored id");
+            localStorage.setItem("_id", id);
+            console.log(localStorage.getItem("_id"), "stored id");
 
-            setAllUserTask(prev =>
-                prev ? prev.filter(task => task._id !== id) : prev
+            setAllUserTask((prev) =>
+                prev ? prev.filter((task) => task._id !== id) : prev
             );
         } catch (error) {
             console.error("Error deleting task:", error);
@@ -32,19 +40,12 @@ export function DashBoardPage() {
 
     function handleId(itemId: string) {
         alert(itemId);
-
-        // Save it
         localStorage.setItem("itemId", itemId);
-
-        // Retrieve it (if you want to log)
-        const storedItem = localStorage.getItem("itemId");
-        console.log(storedItem, "stored item");
+        console.log(localStorage.getItem("itemId"), "stored item");
     }
-
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-pink-600 via-purple-700 to-blue-500">
-            <Header />
 
             <div className="pt-24 pb-12 px-6 max-w-7xl mx-auto">
                 <div className="glass-effect rounded-2xl p-8 mb-8">
@@ -54,9 +55,13 @@ export function DashBoardPage() {
                         </div>
                         <div>
                             <h1 className="text-1xl font-bold text-foreground text-balance lg:text-3xl">
-                                {firstName ? `Welcome back, ${firstName}` : "Welcome back, Mr/Miss"}
+                                {firstName
+                                    ? `Welcome back, ${firstName}`
+                                    : "Welcome back, Mr/Miss"}
                             </h1>
-                            <p className="text-muted-foreground mt-1">Manage your tasks efficiently and stay productive</p>
+                            <p className="text-muted-foreground mt-1">
+                                Manage your tasks efficiently and stay productive
+                            </p>
                         </div>
                     </div>
 
@@ -68,7 +73,9 @@ export function DashBoardPage() {
                                 </div>
                                 <div>
                                     <p className="text-sm text-muted-foreground">Total Tasks</p>
-                                    <p className="text-xl font-semibold text-foreground">{allUserTask ? allUserTask.length : 0}</p>
+                                    <p className="text-xl font-semibold text-foreground">
+                                        {allUserTask ? allUserTask.length : 0}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +87,9 @@ export function DashBoardPage() {
                                 </div>
                                 <div>
                                     <p className="text-sm text-muted-foreground">Active</p>
-                                    <p className="text-xl font-semibold text-foreground">{allUserTask ? allUserTask.length : 0}</p>
+                                    <p className="text-xl font-semibold text-foreground">
+                                        {allUserTask ? allUserTask.length : 0}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +124,7 @@ export function DashBoardPage() {
                                 <div
                                     onClick={() => handleId(task._id)}
                                     key={task._id}
-                                    className=" group card-gradient rounded-2xl p-6 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1"
+                                    className="group card-gradient rounded-2xl p-6 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1"
                                 >
                                     <div className="flex-1 mb-6">
                                         <div className="flex items-start gap-3 mb-4">
@@ -130,7 +139,6 @@ export function DashBoardPage() {
                                                     {task.taskFour && <span className="block">{task.taskFour}</span>}
                                                     {task.taskFive && <span className="block">{task.taskFive}</span>}
                                                 </p>
-
                                             </div>
                                         </div>
 
@@ -141,6 +149,7 @@ export function DashBoardPage() {
                                     </div>
 
                                     <button
+                                        onClick={() => deleteUserTask(task._id)}
                                         disabled={loading === task._id}
                                         className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-destructive/10 text-destructive text-sm font-medium hover:bg-destructive/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 border border-destructive/20 hover:border-destructive/30"
                                     >
@@ -151,12 +160,9 @@ export function DashBoardPage() {
                                             </>
                                         ) : (
                                             <>
-                                                <div className="flex items-center gap-2 cursor-pointer" onClick={() => deleteUserTask(task._id)}>
-                                                    <Trash2 className="w-4 h-4 cursor-pointer" />
-                                                    <span>Delete Task</span>
-                                                </div>
+                                                <Trash2 className="w-4 h-4" />
+                                                <span>Delete Task</span>
                                             </>
-
                                         )}
                                     </button>
                                 </div>
@@ -167,14 +173,17 @@ export function DashBoardPage() {
                             <div className="w-16 h-16 rounded-2xl bg-muted/50 flex items-center justify-center mx-auto mb-4">
                                 <Calendar className="w-8 h-8 text-muted-foreground" />
                             </div>
-                            <h3 className="text-lg font-semibold text-foreground mb-2">No tasks found</h3>
+                            <h3 className="text-lg font-semibold text-foreground mb-2">
+                                No tasks found
+                            </h3>
                             <p className="text-muted-foreground max-w-sm mx-auto">
-                                You don't have any tasks yet. Create your first task to get started with your productivity journey.
+                                You don&apos;t have any tasks yet. Create your first task to get
+                                started with your productivity journey.
                             </p>
                         </div>
                     )}
                 </div>
             </div>
         </div>
-    )
+    );
 }
