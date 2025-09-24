@@ -30,7 +30,7 @@ export function SignupComp() {
     async function onSubmit(values: Signup) {
         try {
             setIsLoading(true);
-            const res = await axios.post('http://localhost:4000/api/v1/register', values);
+            const res = await axios.post('https://todo-api-wnbz.onrender.com/api/v1/register', values);
             if (res) {
                 toast.success(`${res.data.firstName} your sign up is successfull`);
                 router.push('/login');

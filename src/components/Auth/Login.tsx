@@ -30,7 +30,7 @@ export function LoginComp() {
     async function onSubmit(values: Login) {
         try {
             setIsLoading(true);
-            const res = await axios.post('http://localhost:4000/api/v1/login', values);
+            const res = await axios.post('https://todo-api-wnbz.onrender.com/api/v1/login', values);
             if (res) {
                 router.push('/task');
                 toast.success(`${res.data.user.firstName} has successfully log in`);

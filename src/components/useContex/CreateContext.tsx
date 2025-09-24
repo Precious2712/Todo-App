@@ -39,7 +39,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     const handleViewTask = async (id: string) => {
         try {
             const res = await axios.get(
-                `http://localhost:4000/api/v2/getUserTasks/${id}`
+                `https://todo-api-wnbz.onrender.com/api/v2/getUserTasks/${id}`
             );
 
             if (res.data && res.data.allData) {

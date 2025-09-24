@@ -15,7 +15,7 @@ export function DashBoardPage() {
         try {
             setLoading(id);
 
-            await axios.delete(`http://localhost:4000/api/v2/deletetasks/${id}`);
+            await axios.delete(`https://todo-api-wnbz.onrender.com/api/v2/deletetasks/${id}`);
 
             const storedId = localStorage.setItem("_id", id);
             console.log(storedId, "stored id");
