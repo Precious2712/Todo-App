@@ -44,7 +44,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
 
             if (res.data && res.data.allData) {
                 setAllUserTask(res.data.allData);
-                router.push("/dash-board");
+                router.push("/task");
             }
             console.log(res);
 
