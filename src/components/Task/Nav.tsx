@@ -66,7 +66,7 @@ export function Header() {
                 </div>
             </div>
 
-            <div className="hidden lg:flex gap-3 items-center justify-end px-6 py-3 bg-blue-700 shadow-md fixed top-0 w-full z-50">
+            <div className="hidden lg:flex gap-3 items-center justify-end px-6 py-4 bg-black text-white shadow-md fixed top-0 w-full z-50">
                 <p className="font-medium text-gray-700 mr-auto">
                     Hi {firstName || "Guest"}
                 </p>

@@ -47,8 +47,8 @@ export function DashBoardPage() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-pink-600 via-purple-700 to-blue-500">
 
-            <div className="pt-24 pb-12 px-6 max-w-7xl mx-auto">
-                <div className="glass-effect rounded-2xl p-8 mb-8">
+            <div className="w-full pt-12 lg:pt-24 pb-0 px-8">
+                <div className="w-full lg:glass-effect rounded-2xl p-8 mb-8">
                     <div className="flex items-center gap-4 mb-4">
                         <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
                             <CheckCircle2 className="w-6 h-6 text-primary" />
@@ -66,7 +66,7 @@ export function DashBoardPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                        <div className="bg-card/50 rounded-xl p-4 border border-border/50">
+                        <div className="w-full lg:rounded-xl p-4 border border-border/50">
                             <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
                                     <Calendar className="w-4 h-4 text-primary" />
@@ -80,7 +80,7 @@ export function DashBoardPage() {
                             </div>
                         </div>
 
-                        <div className="bg-card/50 rounded-xl p-4 border border-border/50">
+                        <div className=" rounded-xl p-4 border border-border/50">
                             <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 rounded-lg bg-chart-2/20 flex items-center justify-center">
                                     <Clock className="w-4 h-4 text-chart-2" />
@@ -94,7 +94,7 @@ export function DashBoardPage() {
                             </div>
                         </div>
 
-                        <div className="bg-card/50 rounded-xl p-4 border border-border/50">
+                        <div className=" rounded-xl p-4 border border-border/50">
                             <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 rounded-lg bg-chart-4/20 flex items-center justify-center">
                                     <CheckCircle2 className="w-4 h-4 text-chart-4" />
@@ -109,13 +109,17 @@ export function DashBoardPage() {
                 </div>
             </div>
 
-            <div className="px-6 pb max-w-7xl mx-auto">
+            <div className="w-full lg:px-6 pb max-w-7xl mx-auto">
                 <div className="glass-effect rounded-2xl p-8">
                     <div className="flex items-center gap-3 mb-8">
                         <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
                             <Calendar className="w-4 h-4 text-primary" />
                         </div>
-                        <h2 className="text-2xl font-bold text-foreground">Your Tasks</h2>
+                        <h2 className="text-2xl font-bold text-foreground">
+                            {firstName
+                                ? `${firstName} task`
+                                : "Your Task"}
+                        </h2>
                     </div>
 
                     {allUserTask && allUserTask.length > 0 ? (
@@ -169,7 +173,7 @@ export function DashBoardPage() {
                             ))}
                         </div>
                     ) : (
-                        <div className="text-center py-16">
+                        <div className="text-center py-10">
                             <div className="w-16 h-16 rounded-2xl bg-muted/50 flex items-center justify-center mx-auto mb-4">
                                 <Calendar className="w-8 h-8 text-muted-foreground" />
                             </div>
