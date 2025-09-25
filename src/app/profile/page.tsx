@@ -5,9 +5,11 @@ import { Header } from "@/components/Task/Nav";
 
 export default function DashBoard() {
   return (
-    <div className="bg-gradient-to-br from-pink-600 via-purple-700 to-blue-500">
+    <div className="min-h-screen bg-gradient-to-br from-pink-600 via-purple-700 to-blue-500">
       <Header />
-      <DashBoardPage />
+      <div className="pt-2 lg:pt-5">
+        <DashBoardPage />
+      </div>
     </div>
   );
 }

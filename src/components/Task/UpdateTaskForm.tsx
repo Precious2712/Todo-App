@@ -71,10 +71,10 @@ export function UpdateTaskForm() {
 
 
   return (
-    <div className="bg-gradient-to-br from-pink-600 via-purple-700 to-blue-500">
+    <div className="">
       <Header />
 
-      <div className="min-h-screen flex justify-center items-center w-full pt-10">
+      <div className="flex justify-center items-center min-h-screen pt-20">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-[80%] mx-auto lg:w-[30%]">
 
