@@ -32,7 +32,7 @@ export function Header() {
     return (
         <div>
             <div className="block lg:hidden">
-                <div className="flex justify-between items-center w-full fixed top-0 bg-transparent py-2.5 px-4 shadow-md z-50">
+                <div className="flex justify-between items-center w-full fixed top-0 bg-purple-800 py-2.5 px-4 shadow-md z-50">
                     <p className="font-medium text-gray-700">
                         Hi {firstName || "Guest"}
                     </p>
