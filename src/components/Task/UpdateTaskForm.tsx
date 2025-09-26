@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Header } from "./Nav";
 import axios, { isAxiosError } from "axios";
 import toast from "react-hot-toast";
 
@@ -72,86 +71,82 @@ export function UpdateTaskForm() {
 
   return (
     <div className="">
-      <Header />
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-[80%] mx-auto lg:w-[30%] mt-4">
 
-      <div className="flex justify-center items-center min-h-screen pt-20">
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-[80%] mx-auto lg:w-[30%]">
+          <FormField
+            control={form.control}
+            name="taskOne"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Task One</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter first task" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-            <FormField
-              control={form.control}
-              name="taskOne"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Task One</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter first task" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <FormField
+            control={form.control}
+            name="taskTwo"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Task Two</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter second task" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-            <FormField
-              control={form.control}
-              name="taskTwo"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Task Two</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter second task" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <FormField
+            control={form.control}
+            name="taskThree"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Task Three</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter third task" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-            <FormField
-              control={form.control}
-              name="taskThree"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Task Three</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter third task" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <FormField
+            control={form.control}
+            name="taskFour"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Task Four</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter fourth task" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-            <FormField
-              control={form.control}
-              name="taskFour"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Task Four</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter fourth task" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <FormField
+            control={form.control}
+            name="taskFive"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Task Five</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter fifth task" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-            <FormField
-              control={form.control}
-              name="taskFive"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Task Five</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter fifth task" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <Button type="submit" className="w-full">Update Task</Button>
-          </form>
-        </Form>
-      </div>
+          <Button type="submit" className="w-full">Update Task</Button>
+        </form>
+      </Form>
     </div>
   )
 }

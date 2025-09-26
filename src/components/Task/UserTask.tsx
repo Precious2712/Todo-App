@@ -35,8 +35,8 @@ export function UserTask() {
             setIsLoading(true);
             const _id = localStorage.getItem('id');
             console.log(_id);
-            
-        
+
+
             const obj = {
                 userId: _id,
                 ...values
@@ -67,30 +67,25 @@ export function UserTask() {
     }
 
     return (
-        <div className="bg-gradient-to-br from-pink-600 via-purple-700 to-blue-500 ">
-            <Link className="fixed top-0" href='/'>
-                <div className=" flex items-center gap-1.5">
-                    <ArrowBigLeft className="mt-1 w-5 h-5" />
-                    <p className="text-black">home</p>
-                </div>
-            </Link>
-            <div className="flex justify-center items-center min-h-screen">
-                <div className="w-[94%] md:w-[40%] lg:w-[30%] bg-transparent">
-                    <h1 className="font-bold text-4xl text-pretty font-mono text-center">Create Task</h1>
-                    <div className="bg-transparent shadow-2xl rounded-[10px]  p-6 border-b-white hover:border-b-blue-600 border-b-[4px]">
-                        <Form {...form}>
-                            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                                {userTask.map((field, index) => (
-                                    <div key={index}>
-                                        <ShacdTask {...field} control={form.control} />
-                                    </div>
-                                ))}
-                                <Button className="text-white bg-green-500 hover:bg-gradient-to-br from-pink-600 via-purple-700 to-blue-500 hover:text-white cursor-pointer w-full" variant='ghost' type="submit">{loading ? 'loading' : 'Create-task'}</Button>
-                            </form>
-                        </Form>
-                    </div>
+        <div className="flex justify-center items-center mt-4">
+
+            <div className="w-[94%] md:w-[40%] lg:w-[30%] bg-transparent">
+
+                <div className="bg-transparent shadow-2xl rounded-[10px] p-6 border-b-white hover:border-b-blue-600 border-b-[4px]  mt-4">
+                    <h1 className="font-bold text-3xl text-pretty text-blue-500 font-mono text-center">Create Task</h1>
+                    <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                            {userTask.map((field, index) => (
+                                <div key={index}>
+                                    <ShacdTask {...field} control={form.control} />
+                                </div>
+                            ))}
+                            <Button className="text-white bg-green-500 hover:bg-gradient-to-br from-pink-600 via-purple-700 to-blue-500 hover:text-white cursor-pointer w-full" variant='ghost' type="submit">{loading ? 'loading' : 'Create-task'}</Button>
+                        </form>
+                    </Form>
                 </div>
             </div>
+
         </div>
     )
 

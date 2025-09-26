@@ -52,13 +52,8 @@ export function SignupComp() {
     }
 
     return (
-        <div className="bg-gradient-to-br from-pink-600 via-purple-700 to-blue-500 ">
-            <Link className="fixed top-0" href='/'>
-                <div className=" flex items-center gap-1.5">
-                    <ArrowBigLeft className="mt-1 w-5 h-5" />
-                    <p className="text-black">home</p>
-                </div>
-            </Link>
+        <div className="bg-gradient-to-br from-pink-600 via-purple-700 to-blue-500 min-h-screen">
+
             <div className="flex justify-center items-center min-h-screen">
                 <div className="w-[94%] md:w-[40%] lg:w-[30%] bg-transparent">
                     <h1 className="font-bold text-4xl text-pretty font-mono text-center">Create Account</h1>

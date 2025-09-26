@@ -32,7 +32,7 @@ export function Header() {
     return (
         <div>
             <div className="block lg:hidden">
-                <div className="flex justify-between items-center w-full fixed top-0 bg-white py-2.5 px-4 shadow-md z-50">
+                <div className="flex justify-between items-center w-full fixed top-0 bg-transparent py-2.5 px-4 shadow-md z-50">
                     <p className="font-medium text-gray-700">
                         Hi {firstName || "Guest"}
                     </p>
@@ -66,19 +66,19 @@ export function Header() {
                 </div>
             </div>
 
-            <div className="hidden lg:flex gap-3 items-center justify-end px-6 py-4 bg-black text-white shadow-md fixed top-0 w-full z-50">
+            <div className="hidden lg:flex gap-3 items-center justify-end px-6 py-4 bg-black text-black shadow-md fixed top-0 w-full z-50">
                 <p className="font-medium text-gray-700 mr-auto">
                     Hi {firstName || "Guest"}
                 </p>
                 <Link href="/task">
-                    <Button variant='ghost' className="cursor-pointer border hover:bg-gradient-to-br from-pink-600 via-purple-700 to-blue-500">Create task</Button>
+                    <Button variant='ghost' className="cursor-pointer bg-white text-[#8888] text-xs border hover:bg-white">Create task</Button>
                 </Link>
                 <Link href="/update-task">
-                    <Button variant='ghost' className=" cursor-pointer border hover:bg-gradient-to-br from-pink-600 via-purple-700 to-blue-500">Update task</Button>
+                    <Button variant='ghost' className=" cursor-pointer bg-white text-xs text-[#8888] border hover:bg-white">Update task</Button>
                 </Link>
-                <Button variant='ghost' className="cursor-pointer bg-transparent border rounded-[10px] hover:bg-gradient-to-br from-pink-600 via-purple-700 to-blue-500">Sign up</Button>
-                <Button variant='ghost' className="cursor-pointer border hover:bg-gradient-to-br from-pink-600 via-purple-700 to-blue-500" onClick={handleLogOut}>Logout</Button>
-                <Button variant='ghost' className="cursor-pointer border hover:bg-gradient-to-br from-pink-600 via-purple-700 to-blue-500" onClick={() => id && handleViewTask(id)}>View task</Button>
+                <Button variant='ghost' className="cursor-pointer bg-white text-xs text-[#8888] border rounded-[10px] hover:bg-white">Sign up</Button>
+                <Button variant='ghost' className="cursor-pointer bg-white text-xs text-[#8888] border hover:bg-white" onClick={handleLogOut}>Logout</Button>
+                <Button variant='ghost' className="cursor-pointer bg-white text-xs text-[#8888] border hover:bg-white" onClick={() => id && handleViewTask(id)}>View task</Button>
             </div>
         </div>
     );
